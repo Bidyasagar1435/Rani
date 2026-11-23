@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { Sparkles, Wind } from 'lucide-react'
 import './CandleWish.css'
 
-const message = 'Happy birthday, friend who makes ordinary days brighter and every memory more meaningful. Thank you for your laughter, kindness, loyalty, and all the little moments that feel like home. When i am in my lowelest you make my day stressless and anxityless, so special thank u for that. I hope this year brings you endless joy, brave adventures, and every beautiful thing your heart deserves. May be another universe we will be classmate again. Keep shining bright, always.'
+const message = 'Happy birthday, friend who makes ordinary days brighter and every memory more meaningful. Thank you for your laughter, kindness, loyalty, and all the little moments that feel like home. When i am in my lowelest you made my day stressless and anxityless, so special thank u for that. I hope this year brings you endless joy, brave adventures, and every beautiful thing your heart deserves. May be another universe we will be classmate again. Keep shining bright, always.'
 
 function CandleWish() {
   const [hasBlown, setHasBlown] = useState(false)

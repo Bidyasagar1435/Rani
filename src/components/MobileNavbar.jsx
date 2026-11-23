@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { ArrowUpRight, Heart, Menu, X } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
@@ -36,26 +37,27 @@ function MobileNavbar() {
         {isOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="mobile-nav-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-            role="presentation"
-          >
-            <motion.nav
-              className="mobile-nav-panel"
-              id="mobile-navigation"
-              aria-label="Birthday pages"
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              onClick={(event) => event.stopPropagation()}
+      {createPortal(
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className="mobile-nav-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              role="presentation"
             >
+              <motion.nav
+                className="mobile-nav-panel"
+                id="mobile-navigation"
+                aria-label="Birthday pages"
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                onClick={(event) => event.stopPropagation()}
+              >
               <div className="mobile-nav-panel-heading">
                 <div>
                   <span className="eyebrow"><span className="eyebrow-line" /> YOUR BIRTHDAY STORY</span>
@@ -91,10 +93,12 @@ function MobileNavbar() {
               <Link className="mobile-nav-welcome" to="/" onClick={() => setIsOpen(false)}>
                 <Heart size={14} /> Back to the welcome page
               </Link>
-            </motion.nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </motion.nav>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
     </>
   )
 }

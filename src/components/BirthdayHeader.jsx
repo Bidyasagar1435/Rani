@@ -10,7 +10,7 @@ function BirthdayHeader() {
         <span>FOR RANI, WITH LOVE</span>
       </Link>
       <nav className="top-nav" aria-label="Main navigation">
-        {birthdayPages.slice(0, 6).map((page) => (
+        {birthdayPages.slice(0, 7).map((page) => (
           <NavLink
             key={page.id}
             to={page.path}
